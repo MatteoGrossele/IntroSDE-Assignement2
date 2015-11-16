@@ -118,25 +118,7 @@
         </target>
         <!-- Run the JUnit Tests -->
         <!-- Output is XML, could also be plain-->
-        <target name="junit">
-            <echo message="Run tests" />
-            <junit printsummary="yes" haltonfailure="no">
-                <!-- Project classpath, must include junit.jar -->
-                <classpath>
-                    <path location="build" />
-                    <fileset dir="WebContent/WEB-INF/lib">
-                        <include name="**/*.jar" />
-                        <include name="*.jar" />
-                    </fileset>
-                </classpath>
-                <!-- test class -->
-                <batchtest>
-                    <fileset dir="build">
-                        <include name="**/*Test*.class" /> 
-                    </fileset>
-                </batchtest>
-            </junit>
-        </target>
+
         <!-- make sure you have created first the WebContent folder, including a META-INF folder, WEB-INF/web.xml file and WEB-INF/lib folder -->
         <target name="create.war" depends="install">
             <war destfile="sdelab06.war" webxml="${web.dir}/WebContent/WEB-INF/web.xml">
