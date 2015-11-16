@@ -5,6 +5,7 @@ import introsde.rest.ehealth.model.Person;
 
 import java.util.Calendar;
 import java.util.List;
+import java.text.ParseException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -39,7 +40,7 @@ public class PersonTest {
 	// test for adding person without using the DAO object, but isntead using the entity manager 
 	// created in the testing unit by the beforetest method
 	@Test
-	public void addPersonTest() {
+	public void addPersonTest() throws ParseException {
 		System.out.println("--> TEST: addPerson");
 		// count people before starting
 		List<Person> list = em.createNamedQuery("Person.findAll", Person.class)
@@ -50,10 +51,7 @@ public class PersonTest {
 		Person at = new Person();
 		at.setName("test");
 		at.setLastname("Palleto");
-		
-		Calendar cal = Calendar.getInstance();
-		cal.set(1979, Calendar.DECEMBER, 12);
-		at.setBirthdate(cal.getTime());
+		at.setBirthdate("02/03/1987");
 
 		System.out.println("--> TEST: addPerson => persisting the new person");
 		// Act
@@ -106,7 +104,7 @@ public class PersonTest {
 
 	// same adding person test, but using the DAO object
 	@Test
-	public void addPersonWithDaoTest() {
+	public void addPersonWithDaoTest() throws ParseException {
 		System.out.println("--> TEST: addPersonWithDao");
 
 		List<Person> list = Person.getAll();
@@ -115,9 +113,7 @@ public class PersonTest {
 		Person p = new Person();
 		p.setName("Pinco");
 		p.setLastname("Pallino");
-		Calendar c = Calendar.getInstance();
-		c.set(1984, 6, 21);
-		p.setBirthdate(c.getTime());
+		p.setBirthdate("02/03/1987");
 
 		System.out.println("--> TEST: addPersonWithDao ==> persisting person");
 		Person.savePerson(p);
