@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -69,6 +70,13 @@ public class PersonCollectionResource {
     public Person newPerson(Person person) throws IOException {
         System.out.println("Creating new person...123");            
         return Person.savePerson(person);
+    }
+
+    @PUT
+    @Consumes({MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML})
+    public void updatePerson(Person person) throws IOException {
+        System.out.println("Updating person...123");            
+        Person.savePerson(person);
     }
     
 
