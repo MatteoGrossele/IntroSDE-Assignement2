@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -65,20 +64,12 @@ public class PersonCollectionResource {
     }
 
     @POST
-    @Produces({MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML})
-    @Consumes({MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML})
+    @Produces({MediaType.TEXT_XML,  MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML })
+    @Consumes({MediaType.TEXT_XML,  MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML })
     public Person newPerson(Person person) throws IOException {
-        System.out.println("Creating new person...123");            
+        System.out.println("Creating new person...");            
         return Person.savePerson(person);
     }
-
-    @PUT
-    @Consumes({MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML})
-    public void updatePerson(Person person) throws IOException {
-        System.out.println("Updating person...123");            
-        Person.savePerson(person);
-    }
-    
 
     // Defines that the next path parameter after the base url is
     // treated as a parameter and passed to the PersonResources

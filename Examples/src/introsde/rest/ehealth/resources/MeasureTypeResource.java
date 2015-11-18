@@ -19,26 +19,29 @@ import javax.ws.rs.core.UriInfo;
 
 @Stateless // only used if the the application is deployed in a Java EE container
 @LocalBean // only used if the the application is deployed in a Java EE container
-public class PersonResource {
+public class MeasureTypeResource {
     @Context
     UriInfo uriInfo;
     @Context
     Request request;
     int id;
+    String measureType;
 
     EntityManager entityManager; // only used if the application is deployed in a Java EE container
 
-    public PersonResource(UriInfo uriInfo, Request request,int id, EntityManager em) {
+    public MeasureTypeResource(UriInfo uriInfo, Request request, int id, String measureType,EntityManager em) {
         this.uriInfo = uriInfo;
         this.request = request;
         this.id = id;
         this.entityManager = em;
+        this.measureType = measureType;
     }
 
-    public PersonResource(UriInfo uriInfo, Request request,int id) {
+    public MeasureTypeResource(UriInfo uriInfo, Request request,int id, String measureType) {
         this.uriInfo = uriInfo;
         this.request = request;
         this.id = id;
+        this.measureType = measureType;
     }
 
 
@@ -63,7 +66,7 @@ public class PersonResource {
         return person;
     }
 
-    @PUT
+    @POST
     @Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
     public Response putPerson(Person person) {
         System.out.println("--> Updating Person... " +this.id);
@@ -82,28 +85,5 @@ public class PersonResource {
         return res;
     }
 
-    @DELETE
-    public void deletePerson() {
-        Person c = getPersonById(id);
-        if (c == null)
-            throw new RuntimeException("Delete: Person with " + id
-                    + " not found");
-        Person.removePerson(c);
-    }
 
-    public Person getPersonById(int personId) {
-        System.out.println("Reading person from DB with id: "+personId);
-
-        // this will work within a Java EE container, where not DAO will be needed
-        //Person person = entityManager.find(Person.class, personId); 
-
-        Person person = Person.getPersonById(personId);
-        System.out.println("Person: "+person.toString());
-        return person;
-    }
-
-    @Path("{measureType}")
-    public PersonResource getMeasureType(@PathParam("measureType") String measuretype) {
-        return new MeasureTypeResource(uriInfo, request, id, measuretype);
-    }
 }
