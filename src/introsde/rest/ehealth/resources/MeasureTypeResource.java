@@ -5,9 +5,10 @@ import introsde.rest.ehealth.model.Person;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.ws.rs.Consumes;
+import javax.ws.rs.*;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -49,7 +50,7 @@ public class MeasureTypeResource {
     @GET
     @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
     public Person getPerson() {
-        Person person = this.getPersonById(id);
+        Person person = Person.getPersonById(id);
         if (person == null)
             throw new RuntimeException("Get: Person with " + id + " not found");
         return person;
@@ -59,7 +60,7 @@ public class MeasureTypeResource {
     @GET
     @Produces(MediaType.TEXT_XML)
     public Person getPersonHTML() {
-        Person person = this.getPersonById(id);
+        Person person = Person.getPersonById(id);
         if (person == null)
             throw new RuntimeException("Get: Person with " + id + " not found");
         System.out.println("Returning person... " + person.getIdPerson());
@@ -73,7 +74,7 @@ public class MeasureTypeResource {
         System.out.println("--> "+person.toString());
         Person.updatePerson(person);
         Response res;
-        Person existing = getPersonById(this.id);
+        Person existing = Person.getPersonById(this.id);
 
         if (existing == null) {
             res = Response.noContent().build();

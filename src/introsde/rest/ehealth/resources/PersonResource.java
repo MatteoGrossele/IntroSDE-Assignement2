@@ -5,7 +5,7 @@ import introsde.rest.ehealth.model.Person;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.ws.rs.Consumes;
+import javax.ws.rs.*;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -103,7 +103,7 @@ public class PersonResource {
     }
 
     @Path("{measureType}")
-    public PersonResource getMeasureType(@PathParam("measureType") String measuretype) {
+    public MeasureTypeResource getMeasureType(@PathParam("measureType") String measuretype) {
         return new MeasureTypeResource(uriInfo, request, id, measuretype);
     }
 }
