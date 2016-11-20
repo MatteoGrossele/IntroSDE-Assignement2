@@ -43,6 +43,7 @@ public class PersonCollectionResource {
     private EntityManagerFactory entityManagerFactory;
 
     // Return the list of people to the user in the browser
+    /******** REQUEST -1- *********/
     @GET
     @Produces({MediaType.TEXT_XML,  MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML })
     public List<Person> getPersonsBrowser() {
@@ -62,6 +63,8 @@ public class PersonCollectionResource {
         int count = people.size();
         return String.valueOf(count);
     }
+
+    /******** REQUEST -4- *********/
 
     @POST
     @Produces({MediaType.TEXT_XML,  MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML })

@@ -43,6 +43,7 @@ public class PersonResource {
 
 
     // Application integration
+    /******** REQUEST -2- *********/
     @GET
     @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
     public Person getPerson() {
@@ -63,15 +64,14 @@ public class PersonResource {
         return person;
     }
 
+
+    /******** REQUEST -3- *********/
     @PUT
     @Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
     public Response putPerson(Person person) {
         System.out.println("--> Updating Person... " +this.id);
-        System.out.println("--> "+person.toString());
-        Person.updatePerson(person);
-        Response res;
         Person existing = getPersonById(this.id);
-
+        Response res;
         if (existing == null) {
             res = Response.noContent().build();
         } else {
@@ -82,6 +82,8 @@ public class PersonResource {
         return res;
     }
 
+
+    /******** REQUEST -5- *********/
     @DELETE
     public void deletePerson() {
         Person c = getPersonById(id);
@@ -92,18 +94,18 @@ public class PersonResource {
     }
 
     public Person getPersonById(int personId) {
-        System.out.println("Reading person from DB with id: "+personId);
+        //System.out.println("Reading person from DB with id: "+personId);
 
         // this will work within a Java EE container, where not DAO will be needed
         //Person person = entityManager.find(Person.class, personId); 
 
         Person person = Person.getPersonById(personId);
-        System.out.println("Person: "+person.toString());
+        //System.out.println("Person: "+person.toString());
         return person;
     }
 
     @Path("{measureType}")
-    public MeasureTypeResource getMeasureType(@PathParam("measureType") String measuretype) {
-        return new MeasureTypeResource(uriInfo, request, id, measuretype);
+    public MeasureTypesCollectionResource getMeasureType(@PathParam("measureType") String measuretype) {
+        return new MeasureTypesCollectionResource(uriInfo, request, id, measuretype);
     }
 }
