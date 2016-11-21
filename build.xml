@@ -116,8 +116,20 @@
                 </classpath>
             </java>
         </target>
-        <!-- Run the JUnit Tests -->
-        <!-- Output is XML, could also be plain-->
+        
+         <target name="execute.client">
+            <echo message="app start introsde.client.AssignmentClient in ${build.dir}" />
+            <java classname="introsde.client.AssignmentClient" classpath="${build.dir}" fork="true">
+                <arg value="$JAVA_OPTS  -cp" />
+                <classpath>
+                    <path location="build" />
+                    <fileset dir="WebContent/WEB-INF/lib">
+                        <include name="**/*.jar" />
+                        <include name="*.jar" />
+                    </fileset>
+                </classpath>
+            </java>
+        </target>
 
         <!-- make sure you have created first the WebContent folder, including a META-INF folder, WEB-INF/web.xml file and WEB-INF/lib folder -->
         <target name="create.war" depends="install">
