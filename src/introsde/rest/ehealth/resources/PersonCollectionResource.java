@@ -47,7 +47,6 @@ public class PersonCollectionResource {
     @GET
     @Produces({MediaType.TEXT_XML,  MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML })
     public List<Person> getPersonsBrowser() {
-        System.out.println("Getting list of people...");
         List<Person> people = Person.getAll();
         return people;
     }
@@ -58,7 +57,6 @@ public class PersonCollectionResource {
     @Path("count")
     @Produces(MediaType.TEXT_PLAIN)
     public String getCount() {
-        System.out.println("Getting count...");
         List<Person> people = Person.getAll();
         int count = people.size();
         return String.valueOf(count);
@@ -70,7 +68,6 @@ public class PersonCollectionResource {
     @Produces({MediaType.TEXT_XML,  MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML })
     @Consumes({MediaType.TEXT_XML,  MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML })
     public Person newPerson(Person person) throws IOException {
-        System.out.println("Creating new person...");            
         return Person.savePerson(person);
     }
 

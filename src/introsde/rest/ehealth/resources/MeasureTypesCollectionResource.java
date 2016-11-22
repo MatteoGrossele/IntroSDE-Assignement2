@@ -50,52 +50,36 @@ public class MeasureTypesCollectionResource {
     /******** REQUEST -6- *********/
     // Application integration
     @GET
-    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Measure> getMeasures() {
         List<Measure> history = Measure.getMeasureHistorybyPersonIdType(id,measureType);
-        if (history == null)
-            throw new RuntimeException("Get: Measure History with Person " + id + " and Type " + measureType +" not found");
         return history;
     }
 
-    // for the browser
-    @GET
-    @Produces(MediaType.TEXT_XML)
-    public List<Measure> getMeasuresHTML() {
-         List<Measure> history = Measure.getMeasureHistorybyPersonIdType(id,measureType);
-        if (history == null)
-            throw new RuntimeException("Get: Measure History with Person " + id + " and Type " + measureType +" not found");
-        return history;
-    }
 
     /******** REQUEST -7- *********/
     @Path("{idMeasure}")
     @GET
-    public  List<Measure>  getPerson(@PathParam("idMeasure") int mid) {
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+    public  List<Measure>  getMeasurebyPersonIdTypeMid(@PathParam("idMeasure") int mid) {
         List<Measure> history = Measure.getMeasureHistorybyPersonIdTypeMid(id ,measureType, mid);
-         if (history == null)
-            throw new RuntimeException("Get: Measure History with Person " + id + ", Type " + measureType +" and Mid " + mid +" not found");
         return history;
     }
 
     /******** REQUEST -8- *********/
     @POST
     @Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-    public Response putPerson(Person person) {
-        System.out.println("--> Updating Person... " +this.id);
-        System.out.println("--> "+person.toString());
-        Person.updatePerson(person);
-        Response res;
-        Person existing = Person.getPersonById(this.id);
+    @Produces({MediaType.APPLICATION_XML,  MediaType.APPLICATION_JSON})
+    public Measure newMeasure(Measure measure) {
+       return Measure.saveMeasure(measure);
+    }
 
-        if (existing == null) {
-            res = Response.noContent().build();
-        } else {
-            res = Response.created(uriInfo.getAbsolutePath()).build();
-            person.setIdPerson(this.id);
-            Person.updatePerson(person);
-        }
-        return res;
+    //Used to delete the created measure to avoid conflict in future executions
+    @DELETE
+    @Path("{idMeasure}")
+    public void deleteMeasure(@PathParam("idMeasure") int id) {
+        Measure c = Measure.getMeasureById(id);
+        Measure.removeMeasure(c);
     }
 
    

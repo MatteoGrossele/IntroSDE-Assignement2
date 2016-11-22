@@ -43,10 +43,12 @@ public class Person implements Serializable {
     private List<Measure> measures;
     
     @XmlElementWrapper(name = "healthProfile")
-    public List<Measure> getMeasure() {
+    public List<Measure> getMeasures() {
         //return measures;
         return Measure.getHealthProfile(idPerson);
     }
+
+    public void setMeasures(List<Measure> measures){this.measures = measures;}
     // add below all the getters and setters of all the private attributes
     
     // getters
@@ -101,10 +103,13 @@ public class Person implements Serializable {
     public static Person savePerson(Person p) {
         EntityManager em = LifeCoachDao.instance.createEntityManager();
         EntityTransaction tx = em.getTransaction();
+
         tx.begin();
         em.persist(p);
         tx.commit();
         LifeCoachDao.instance.closeConnections(em);
+        //for(Measure item : p.measures)
+        //    Measure.saveMeasure(item);
         return p;
     } 
 

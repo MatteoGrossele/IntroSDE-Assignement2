@@ -30,7 +30,7 @@ public class Measure implements Serializable {
 	@GeneratedValue(generator="sqlite_measure")
 	@TableGenerator(name="sqlite_measure", table="sqlite_sequence",
 	    pkColumnName="name", valueColumnName="seq",
-	    pkColumnValue="idMeasure")
+	    pkColumnValue="Measure")
 	@Column(name = "idMeasure")
 	private int idMeasure;
 
@@ -134,6 +134,8 @@ public class Measure implements Serializable {
 		String query = "SELECT m FROM Measure m WHERE m.idPerson=" + personId + " AND m.date IN (SELECT MAX(m2.date) FROM Measure m2 WHERE m2.idPerson=" + personId+" AND m2.mid=m.mid)";
 		List<Measure> healthprofile = em.createQuery(query, Measure.class).getResultList();
 		LifeCoachDao.instance.closeConnections(em);
+		if(healthprofile.isEmpty())
+			return null;
 		return healthprofile;
 	}
 
@@ -142,6 +144,8 @@ public class Measure implements Serializable {
 		String query = "SELECT m FROM Measure m WHERE m.idPerson = "+personId+" AND m.type = \"" + measureType + "\"";
 		List<Measure> history = em.createQuery(query, Measure.class).getResultList();
 		LifeCoachDao.instance.closeConnections(em);
+		if(history.isEmpty())
+			return null;
 		return history;
 	}
 
@@ -150,6 +154,8 @@ public class Measure implements Serializable {
 		String query = "SELECT m FROM Measure m WHERE m.idPerson = "+personId+" AND m.type = \"" + measureType + "\" AND m.mid = "+mid+"" ;
 		List<Measure> history = em.createQuery(query, Measure.class).getResultList();
 		LifeCoachDao.instance.closeConnections(em);
+		if(history.isEmpty())
+			return null;
 		return history;
 	}
 
