@@ -1,8 +1,10 @@
 package introsde.rest.ehealth.resources;
 import introsde.rest.ehealth.model.Person;
+import introsde.rest.ehealth.model.Measure;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Iterator;
 import javax.ejb.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,7 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.PersistenceUnit;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.Consumes;
+import javax.ws.rs.*;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -43,11 +45,44 @@ public class PersonCollectionResource {
     private EntityManagerFactory entityManagerFactory;
 
     // Return the list of people to the user in the browser
-    /******** REQUEST -1- *********/
+    /******** REQUEST -1- **********/
+    /******** REQUEST -12- *********/
     @GET
     @Produces({MediaType.TEXT_XML,  MediaType.APPLICATION_JSON ,  MediaType.APPLICATION_XML })
-    public List<Person> getPersonsBrowser() {
+    public List<Person> getPersonsBrowser(@QueryParam("measureType") String measureType, @QueryParam("max") String max, @QueryParam("min") String min) {
         List<Person> people = Person.getAll();
+
+        if(measureType != null){
+            float massimo = Float.parseFloat(max);
+            float minimo = Float.parseFloat(min);
+            for (Iterator<Person> iter = people.listIterator(); iter.hasNext(); ) {
+                Person a = iter.next();
+                List<Measure> misure = a.getMeasures();
+                if(misure != null)
+                    for(Measure meas : misure) {
+                        if(meas.getType().equals(measureType)) {
+                            float personvalue = Float.parseFloat(meas.getValue());
+                            if(max != null) {
+                                if(personvalue > massimo){
+                                    iter.remove();
+                                    break;
+                                }
+                            }
+                            if(min != null) {
+                                if(personvalue < minimo){
+                                    iter.remove();
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+                else
+                    iter.remove();
+                
+            }
+        }
+
         return people;
     }
 

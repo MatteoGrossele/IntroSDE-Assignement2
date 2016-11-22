@@ -3,6 +3,12 @@ package introsde.rest.ehealth.resources;
 import introsde.rest.ehealth.model.*;
 
 import java.util.List;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.text.DateFormat;
+import java.util.Locale;
+import java.util.Iterator;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -48,11 +54,28 @@ public class MeasureTypesCollectionResource {
     }
 
     /******** REQUEST -6- *********/
+    /******** REQUEST -11- *********/
     // Application integration
     @GET
     @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Measure> getMeasures() {
+    public List<Measure> getMeasures(@QueryParam("before") String before,@QueryParam("after") String after ) throws ParseException {
         List<Measure> history = Measure.getMeasureHistorybyPersonIdType(id,measureType);
+        if(after != null && before != null){
+
+            DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+            Date beforedate = format.parse(before);
+            Date afterdate = format.parse(after);
+            for (Iterator<Measure> iter = history.listIterator(); iter.hasNext(); ) {
+                Measure a = iter.next();
+                Date measuredate = format.parse(a.getDate());
+                if (measuredate.before(afterdate)) {
+                    iter.remove();
+                }
+                if (measuredate.after(beforedate)) {
+                    iter.remove();
+                }
+            }
+        }
         return history;
     }
 
@@ -80,6 +103,23 @@ public class MeasureTypesCollectionResource {
     public void deleteMeasure(@PathParam("idMeasure") int id) {
         Measure c = Measure.getMeasureById(id);
         Measure.removeMeasure(c);
+    }
+
+    /******** REQUEST -10- *********/
+    @PUT
+    @Path("{idMeasure}")
+    @Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    public Response putPerson(@PathParam("idMeasure") int id, Measure measure) {
+        Measure existing = Measure.getMeasureById(id);
+        Response res;
+        if (existing == null) {
+            res = Response.noContent().build();
+        } else {
+            res = Response.ok().entity(measure).build();
+            measure.setIdMeasure(id);
+            Measure.updateMeasure(measure);
+        }
+        return res;
     }
 
    
