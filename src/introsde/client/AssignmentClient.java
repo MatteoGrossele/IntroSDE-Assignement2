@@ -17,7 +17,7 @@ import org.glassfish.jersey.client.ClientConfig;
 
 public class AssignmentClient {
 	//URI of the web server
-	static String URI = "http://127.0.1.1:5700/introsde-assignment2/";
+	static String URI = "https://matteogrosseleintrosde.herokuapp.com/introsde-assignment2/";
 
 	//Names of the logs files
 	static String XML_LOGS = "client_xml.txt";
@@ -45,7 +45,7 @@ public class AssignmentClient {
         //Id of the first person in the aplpications
         int firstPersonId = 1;
 		//Ids of the first and last person inside the people list
-		int [] storedId = {1,3};
+		int [] storedId = {1,4};
 		//Id of the person created at step 4
 		String createdPersonIdXML = "999";
 		String createdPersonIdJSon = "998";
@@ -57,7 +57,7 @@ public class AssignmentClient {
 		int savedMid = 0;
 
 		//Print uri of the server
-		System.out.print("SERVER  URI = " + URI);
+		System.out.println("SERVER  URI = " + URI);
 
 		/*
 		*											STEP 1
@@ -99,9 +99,7 @@ public class AssignmentClient {
 			result = "ERROR";
 
 		//Set id of the first and last person
-		firstPersonId = 1;
-		storedId[0] = 1;
-		storedId[1] = 3;
+		firstPersonId = 1;storedId[0] = 1;storedId[1] = 4;
 
 		//Get message to print out 
 		message = getMessageInfo(1, "GET",URI + requestPath,"APPLICATION/JSON", "APPLICATION/JSON", result, status, body);
@@ -162,6 +160,7 @@ public class AssignmentClient {
 
 		writerXML.write("------------------------------ STEP 3 XML --------------------------\n");
         System.out.print("------------------------------ STEP 3 XML --------------------------\n");
+        String xmlTag = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
         requestPath = "person/" + firstPersonId;
         putPerson =  "<person>"
 						+"<birthdate>24/06/1993</birthdate>"
@@ -264,7 +263,7 @@ public class AssignmentClient {
 			result = "ERROR";
 
 		//Get message to print out 
-		message = getMessageInfo(4, "POST",URI + requestPath,"APPLICATION/XML", "APPLICATION/XML", result, status, postPerson);
+		message = getMessageInfo(4, "POST",URI + requestPath,"APPLICATION/XML", "APPLICATION/XML", result, status, xmlTag + postPerson);
 
 		//Print result from the request
 		writerXML.write(message);
@@ -418,10 +417,6 @@ public class AssignmentClient {
 		else
 			result = "ERROR";
 
-		measureTypes = new String[2];
-		measureTypes[0] = "height";
-		measureTypes[1] = "weight";
-
 		//Get message to print out 
 		message = getMessageInfo(9, "GET",URI + requestPath,"APPLICATION/XML", "APPLICATION/XML", result, status, body);
 
@@ -442,6 +437,13 @@ public class AssignmentClient {
 			result = "OK";
 		else
 			result = "ERROR";
+
+		//Ottengo le misure supportate dal sistema
+		String measureTypesString = body.substring(body.indexOf('[') + 1, body.indexOf(']'));
+		measureTypesString = measureTypesString.replace("\"","");
+		measureTypes = measureTypesString.split(",");
+		for(String s : measureTypes)
+			s.trim();
 
 		//Get message to print out 
 		message = getMessageInfo(9, "GET",URI + requestPath,"APPLICATION/JSON", "APPLICATION/JSON", result, status, body);
@@ -494,7 +496,7 @@ public class AssignmentClient {
 				if(status == 202 || status == 200 || status == 201) {
 					result = "OK";
 					savedPersonId = storedId[id];
-					savedMid = 1;
+					savedMid = 2;
 				}
         	}
 		
@@ -513,9 +515,8 @@ public class AssignmentClient {
         System.out.print("------------------------------ STEP 8 XML --------------------------\n");
         
         measureType = "height";
-        savedMid = 2;
 
-		requestPath = "person/" +savedPersonId + "/" + measureType + "/" + savedMid;
+		requestPath = "person/" + savedPersonId + "/" + measureType + "/" + savedMid;
 
 		response = service.path(requestPath).request().accept(MediaType.APPLICATION_XML).get();
 		status = response.getStatus();
@@ -536,7 +537,7 @@ public class AssignmentClient {
 		writerJson.write("------------------------------ STEP 8 JSON --------------------------\n");
         System.out.print("------------------------------ STEP 8 JSON --------------------------\n");
 
-		requestPath = "person/" +savedPersonId + "/" + measureType + "/" + savedMid;
+		requestPath = "person/" + savedPersonId + "/" + measureType + "/" + savedMid;
 
 		response = service.path(requestPath).request().accept(MediaType.APPLICATION_JSON).get();
 		status = response.getStatus();
@@ -699,20 +700,20 @@ public class AssignmentClient {
         System.out.print("------------------------------ STEP 10 XML --------------------------\n");
         
         measureType = "height";
-        savedMid = 2;
+        savedMid = 65;
 
 		requestPath = "person/" +savedPersonId + "/" + measureType;
 
 		String putMeasure = "<Measure>"
 								+"<date>09/12/2011</date>"
-								+"<idMeasure>65</idMeasure>"
+								+"<idMeasure>"+savedMid+"</idMeasure>"
 								+"<idPerson>"+firstPersonId +"</idPerson>"
 								+"<mid>8</mid>"
 								+"<type>height</type>"
 								+"<value>90</value>"
 							+"</Measure>";
 
-		response = service.path(requestPath + "/65").request().accept(MediaType.APPLICATION_XML).put(Entity.xml(putMeasure));
+		response = service.path(requestPath + "/"+savedMid).request().accept(MediaType.APPLICATION_XML).put(Entity.xml(putMeasure));
 		status = response.getStatus();
 		body = response.readEntity(String.class);
 		//Condition for the request to be successfull
@@ -722,7 +723,7 @@ public class AssignmentClient {
 			result = "ERROR";
 
 		//Get message to print out 
-		message = getMessageInfo(10, "PUT",URI + requestPath+ "/65","APPLICATION/XML", "APPLICATION/XML", result, status, body);
+		message = getMessageInfo(10, "PUT",URI + requestPath+ "/"+savedMid,"APPLICATION/XML", "APPLICATION/XML", result, status, body);
 
 		//Print result from the request
 		writerXML.write(message);
@@ -744,24 +745,25 @@ public class AssignmentClient {
 		writerXML.write(message);
 		System.out.print(message);
 
-		service.path(requestPath + "/65").request().accept(MediaType.APPLICATION_XML).delete();
+		service.path(requestPath + "/"+savedMid).request().accept(MediaType.APPLICATION_XML).delete();
 
 
 		writerJson.write("------------------------------ STEP 10 JSON --------------------------\n");
         System.out.print("------------------------------ STEP 10 JSON --------------------------\n");
 
+        savedMid = 66;
 		requestPath = "person/" +savedPersonId + "/" + measureType ;
 
 		putMeasure ="{"
 						+"\"date\": \"09/12/2011\","
-						+"\"idMeasure\": 66,"
+						+"\"idMeasure\": "+savedMid+","
 						+"\"idPerson\": "+firstPersonId +","
 						+"\"mid\": 8,"
 						+"\"type\": \""+measureType+"\","
 						+"\"value\": \"90\""
 					+"}";
 
-		response = service.path(requestPath + "/66").request().accept(MediaType.APPLICATION_JSON).put(Entity.json(putMeasure));
+		response = service.path(requestPath + "/"+savedMid).request().accept(MediaType.APPLICATION_JSON).put(Entity.json(putMeasure));
 		status = response.getStatus();
 		body = response.readEntity(String.class);
 		//Condition for the request to be successfull
@@ -771,7 +773,7 @@ public class AssignmentClient {
 			result = "ERROR";
 		
 		//Get message to print out 
-		message = getMessageInfo(10, "PUT",URI + requestPath + "/66","APPLICATION/JSON", "APPLICATION/JSON", result, status, body);
+		message = getMessageInfo(10, "PUT",URI + requestPath + "/"+savedMid,"APPLICATION/JSON", "APPLICATION/JSON", result, status, body);
 
 		//Print result from the request
 		writerJson.write(message);
@@ -793,7 +795,7 @@ public class AssignmentClient {
 		writerJson.write(message);
 		System.out.print(message);
 
-		service.path(requestPath + "/66").request().accept(MediaType.APPLICATION_JSON).delete();
+		service.path(requestPath + "/"+savedMid).request().accept(MediaType.APPLICATION_JSON).delete();
 
 		/*
 		*											STEP 11

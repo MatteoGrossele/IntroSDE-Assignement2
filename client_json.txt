@@ -5,7 +5,7 @@ Request #1: GET http://127.0.1.1:5700/introsde-assignment2/person Accept: APPLIC
 => Result: OK
 => HTTP Status: 200
 
-[{"idPerson":1,"lastname":"Vader","firstname":"Darth","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]},{"idPerson":2,"lastname":"Norris","firstname":"Chuck","birthdate":"02/09/1978"},{"idPerson":3,"lastname":"Jones","firstname":"Jessica","birthdate":"02/09/1978"},{"idPerson":4,"lastname":"Kucherbaev","firstname":"Pavel","birthdate":"03/03/1987"}]
+[{"idPerson":1,"lastname":"Grossele","firstname":"Matteo","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]},{"idPerson":2,"lastname":"Norris","firstname":"Chuck","birthdate":"02/09/1978"},{"idPerson":3,"lastname":"Jones","firstname":"Jessica","birthdate":"02/09/1978"},{"idPerson":4,"lastname":"Kucherbaev","firstname":"Pavel","birthdate":"03/03/1987"}]
 
 ------------------------------ STEP 2 JSON --------------------------
 
@@ -14,7 +14,7 @@ Request #2: GET http://127.0.1.1:5700/introsde-assignment2/person/1 Accept: APPL
 => Result: OK
 => HTTP Status: 200
 
-{"idPerson":1,"lastname":"Vader","firstname":"Darth","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]}
+{"idPerson":1,"lastname":"Grossele","firstname":"Matteo","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]}
 
 ------------------------------ STEP 3 JSON --------------------------
 

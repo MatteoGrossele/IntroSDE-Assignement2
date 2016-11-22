@@ -5,7 +5,7 @@ Request #1: GET http://127.0.1.1:5700/introsde-assignment2/person Accept: APPLIC
 => Result: OK
 => HTTP Status: 200
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><people><person><birthdate>24/06/1993</birthdate><firstname>Darth</firstname><idPerson>1</idPerson><lastname>Vader</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person><person><birthdate>02/09/1978</birthdate><firstname>Chuck</firstname><idPerson>2</idPerson><lastname>Norris</lastname></person><person><birthdate>02/09/1978</birthdate><firstname>Jessica</firstname><idPerson>3</idPerson><lastname>Jones</lastname></person><person><birthdate>03/03/1987</birthdate><firstname>Pavel</firstname><idPerson>4</idPerson><lastname>Kucherbaev</lastname></person></people>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><people><person><birthdate>24/06/1993</birthdate><firstname>Matteo</firstname><idPerson>1</idPerson><lastname>Grossele</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person><person><birthdate>02/09/1978</birthdate><firstname>Chuck</firstname><idPerson>2</idPerson><lastname>Norris</lastname></person><person><birthdate>02/09/1978</birthdate><firstname>Jessica</firstname><idPerson>3</idPerson><lastname>Jones</lastname></person><person><birthdate>03/03/1987</birthdate><firstname>Pavel</firstname><idPerson>4</idPerson><lastname>Kucherbaev</lastname></person></people>
 
 ------------------------------ STEP 2 XML --------------------------
 
@@ -14,7 +14,7 @@ Request #2: GET http://127.0.1.1:5700/introsde-assignment2/person/1 Accept: APPL
 => Result: OK
 => HTTP Status: 200
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><person><birthdate>24/06/1993</birthdate><firstname>Darth</firstname><idPerson>1</idPerson><lastname>Vader</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><person><birthdate>24/06/1993</birthdate><firstname>Matteo</firstname><idPerson>1</idPerson><lastname>Grossele</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person>
 
 ------------------------------ STEP 3 XML --------------------------
 
@@ -32,7 +32,7 @@ Request #4: POST http://127.0.1.1:5700/introsde-assignment2/person Accept: APPLI
 => Result: OK
 => HTTP Status: 200
 
-<person><birthdate>01/01/1945</birthdate><firstname>Chuck</firstname><idPerson>999</idPerson><lastname>Norris</lastname><measures><Measure><date>02/09/1978</date><idMeasure>88</idMeasure><idPerson>999</idPerson><mid>1</mid><type>weight</type><value>78.9</value></Measure><Measure><date>02/09/1978</date><idMeasure>89</idMeasure><idPerson>999</idPerson><mid>2</mid><type>height</type><value>172.0</value></Measure></measures></person>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><person><birthdate>01/01/1945</birthdate><firstname>Chuck</firstname><idPerson>999</idPerson><lastname>Norris</lastname><measures><Measure><date>02/09/1978</date><idMeasure>88</idMeasure><idPerson>999</idPerson><mid>1</mid><type>weight</type><value>78.9</value></Measure><Measure><date>02/09/1978</date><idMeasure>89</idMeasure><idPerson>999</idPerson><mid>2</mid><type>height</type><value>172.0</value></Measure></measures></person>
 
 ------------------------------ STEP 5 XML --------------------------
 
