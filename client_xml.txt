@@ -5,7 +5,7 @@ Request #1: GET http://127.0.1.1:5700/introsde-assignment2/person Accept: APPLIC
 => Result: OK
 => HTTP Status: 200
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><people><person><birthdate>24/06/1993</birthdate><firstname>Matteo</firstname><idPerson>1</idPerson><lastname>Grossele</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>352</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person><person><birthdate>02/09/1978</birthdate><firstname>Chuck</firstname><idPerson>2</idPerson><lastname>Norris</lastname></person><person><birthdate>02/09/1978</birthdate><firstname>Pappo</firstname><idPerson>3</idPerson><lastname>Pippo</lastname></person><person><birthdate>01/01/1945</birthdate><firstname>Chuck</firstname><idPerson>8</idPerson><lastname>Norris</lastname></person><person><birthdate>01/01/1945</birthdate><firstname>Chuck</firstname><idPerson>9</idPerson><lastname>Norris</lastname></person><person><birthdate>01/01/1945</birthdate><firstname>Chuck</firstname><idPerson>10</idPerson><lastname>Norris</lastname></person><person><birthdate>01/01/1945</birthdate><firstname>Chuck</firstname><idPerson>11</idPerson><lastname>Norris</lastname></person><person><birthdate>12/12/1979</birthdate><firstname>test</firstname><idPerson>2603</idPerson><lastname>Palleto</lastname></person><person><birthdate>03/03/1987</birthdate><firstname>Pavel</firstname><idPerson>2703</idPerson><lastname>Kucherbaev</lastname></person><person><birthdate>02/03/1987</birthdate><firstname>test</firstname><idPerson>2753</idPerson><lastname>Palleto</lastname></person><person><birthdate>02/03/1987</birthdate><firstname>test</firstname><idPerson>2803</idPerson><lastname>Palleto</lastname></person><person><birthdate>02/03/1987</birthdate><firstname>test</firstname><idPerson>2853</idPerson><lastname>Palleto</lastname></person><person><birthdate>02/03/1987</birthdate><firstname>test</firstname><idPerson>2953</idPerson><lastname>Palleto</lastname></person><person><birthdate>02/09/1978</birthdate><firstname>Armando</firstname><idPerson>50000</idPerson><lastname>Chan</lastname></person></people>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><people><person><birthdate>24/06/1993</birthdate><firstname>Darth</firstname><idPerson>1</idPerson><lastname>Vader</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person><person><birthdate>02/09/1978</birthdate><firstname>Chuck</firstname><idPerson>2</idPerson><lastname>Norris</lastname></person><person><birthdate>02/09/1978</birthdate><firstname>Jessica</firstname><idPerson>3</idPerson><lastname>Jones</lastname></person><person><birthdate>03/03/1987</birthdate><firstname>Pavel</firstname><idPerson>4</idPerson><lastname>Kucherbaev</lastname></person></people>
 
 ------------------------------ STEP 2 XML --------------------------
 
@@ -14,7 +14,7 @@ Request #2: GET http://127.0.1.1:5700/introsde-assignment2/person/1 Accept: APPL
 => Result: OK
 => HTTP Status: 200
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><person><birthdate>24/06/1993</birthdate><firstname>Matteo</firstname><idPerson>1</idPerson><lastname>Grossele</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>352</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><person><birthdate>24/06/1993</birthdate><firstname>Darth</firstname><idPerson>1</idPerson><lastname>Vader</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person>
 
 ------------------------------ STEP 3 XML --------------------------
 
@@ -23,7 +23,7 @@ Request #3: PUT http://127.0.1.1:5700/introsde-assignment2/person/1 Accept: APPL
 => Result: OK
 => HTTP Status: 200
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><person><birthdate>24/06/1993</birthdate><firstname>Matteo</firstname><idPerson>1</idPerson><lastname>Grossele</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>352</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><person><birthdate>24/06/1993</birthdate><firstname>Matteo</firstname><idPerson>1</idPerson><lastname>Grossele</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person>
 
 ------------------------------ STEP 4 XML --------------------------
 
@@ -67,7 +67,7 @@ Request #6: GET http://127.0.1.1:5700/introsde-assignment2/person/1/height Accep
 => Result: OK
 => HTTP Status: 200
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><measures><Measure><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></Measure><Measure><date>02/09/1978</date><idMeasure>352</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></Measure></measures>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><measures><Measure><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></Measure><Measure><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></Measure></measures>
 
 ------------------------------ STEP 8 XML --------------------------
 
@@ -85,7 +85,7 @@ Request #6: GET http://127.0.1.1:5700/introsde-assignment2/person/1/height Accep
 => Result: OK
 => HTTP Status: 200
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><measures><Measure><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></Measure><Measure><date>02/09/1978</date><idMeasure>352</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></Measure></measures>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><measures><Measure><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></Measure><Measure><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></Measure></measures>
 
 
 
@@ -101,7 +101,7 @@ Request #6: GET http://127.0.1.1:5700/introsde-assignment2/person/1/height Accep
 => Result: OK
 => HTTP Status: 200
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><measures><Measure><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></Measure><Measure><date>09/12/2011</date><idMeasure>65</idMeasure><idPerson>1</idPerson><mid>8</mid><type>height</type><value>12.0</value></Measure><Measure><date>02/09/1978</date><idMeasure>352</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></Measure></measures>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><measures><Measure><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></Measure><Measure><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></Measure><Measure><date>09/12/2011</date><idMeasure>65</idMeasure><idPerson>1</idPerson><mid>8</mid><type>height</type><value>12.0</value></Measure></measures>
 
 ------------------------------ STEP 10 XML --------------------------
 
@@ -118,7 +118,7 @@ Request #6: GET http://127.0.1.1:5700/introsde-assignment2/person/1/height Accep
 => Result: OK
 => HTTP Status: 200
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><measures><Measure><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></Measure><Measure><date>09/12/2011</date><idMeasure>65</idMeasure><idPerson>1</idPerson><mid>8</mid><type>height</type><value>90</value></Measure><Measure><date>09/12/2011</date><idMeasure>66</idMeasure><idPerson>1</idPerson><mid>8</mid><type>height</type><value>12.0</value></Measure><Measure><date>02/09/1978</date><idMeasure>352</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></Measure></measures>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><measures><Measure><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></Measure><Measure><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></Measure><Measure><date>09/12/2011</date><idMeasure>65</idMeasure><idPerson>1</idPerson><mid>8</mid><type>height</type><value>90</value></Measure><Measure><date>09/12/2011</date><idMeasure>66</idMeasure><idPerson>1</idPerson><mid>8</mid><type>height</type><value>12.0</value></Measure></measures>
 
 ------------------------------ STEP 11 XML --------------------------
 
@@ -127,7 +127,7 @@ Request #11: GET http://127.0.1.1:5700/introsde-assignment2/person/1/height?befo
 => Result: OK
 => HTTP Status: 200
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><measures><Measure><date>02/09/1978</date><idMeasure>352</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></Measure></measures>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><measures><Measure><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></Measure></measures>
 
 ------------------------------ STEP 12 XML --------------------------
 
@@ -136,5 +136,5 @@ Request #12: GET http://127.0.1.1:5700/introsde-assignment2/person?measureType=h
 => Result: OK
 => HTTP Status: 200
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><people><person><birthdate>24/06/1993</birthdate><firstname>Matteo</firstname><idPerson>1</idPerson><lastname>Grossele</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>352</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person></people>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><people><person><birthdate>24/06/1993</birthdate><firstname>Matteo</firstname><idPerson>1</idPerson><lastname>Grossele</lastname><healthProfile><measures><date>09/12/2011</date><idMeasure>1</idMeasure><idPerson>1</idPerson><mid>2</mid><type>height</type><value>90</value></measures><measures><date>02/09/1978</date><idMeasure>2</idMeasure><idPerson>1</idPerson><mid>3</mid><type>height</type><value>86</value></measures></healthProfile></person></people>
 

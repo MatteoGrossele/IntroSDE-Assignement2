@@ -5,7 +5,7 @@ Request #1: GET http://127.0.1.1:5700/introsde-assignment2/person Accept: APPLIC
 => Result: OK
 => HTTP Status: 200
 
-[{"idPerson":1,"lastname":"Grossele","firstname":"Matteo","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":352,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]},{"idPerson":2,"lastname":"Norris","firstname":"Chuck","birthdate":"02/09/1978"},{"idPerson":3,"lastname":"Pippo","firstname":"Pappo","birthdate":"02/09/1978"},{"idPerson":8,"lastname":"Norris","firstname":"Chuck","birthdate":"01/01/1945"},{"idPerson":9,"lastname":"Norris","firstname":"Chuck","birthdate":"01/01/1945"},{"idPerson":10,"lastname":"Norris","firstname":"Chuck","birthdate":"01/01/1945"},{"idPerson":11,"lastname":"Norris","firstname":"Chuck","birthdate":"01/01/1945"},{"idPerson":2603,"lastname":"Palleto","firstname":"test","birthdate":"12/12/1979"},{"idPerson":2703,"lastname":"Kucherbaev","firstname":"Pavel","birthdate":"03/03/1987"},{"idPerson":2753,"lastname":"Palleto","firstname":"test","birthdate":"02/03/1987"},{"idPerson":2803,"lastname":"Palleto","firstname":"test","birthdate":"02/03/1987"},{"idPerson":2853,"lastname":"Palleto","firstname":"test","birthdate":"02/03/1987"},{"idPerson":2953,"lastname":"Palleto","firstname":"test","birthdate":"02/03/1987"},{"idPerson":50000,"lastname":"Chan","firstname":"Armando","birthdate":"02/09/1978"}]
+[{"idPerson":1,"lastname":"Vader","firstname":"Darth","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]},{"idPerson":2,"lastname":"Norris","firstname":"Chuck","birthdate":"02/09/1978"},{"idPerson":3,"lastname":"Jones","firstname":"Jessica","birthdate":"02/09/1978"},{"idPerson":4,"lastname":"Kucherbaev","firstname":"Pavel","birthdate":"03/03/1987"}]
 
 ------------------------------ STEP 2 JSON --------------------------
 
@@ -14,7 +14,7 @@ Request #2: GET http://127.0.1.1:5700/introsde-assignment2/person/1 Accept: APPL
 => Result: OK
 => HTTP Status: 200
 
-{"idPerson":1,"lastname":"Grossele","firstname":"Matteo","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":352,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]}
+{"idPerson":1,"lastname":"Vader","firstname":"Darth","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]}
 
 ------------------------------ STEP 3 JSON --------------------------
 
@@ -23,7 +23,7 @@ Request #3: PUT http://127.0.1.1:5700/introsde-assignment2/person/1 Accept: APPL
 => Result: OK
 => HTTP Status: 200
 
-{"idPerson":1,"lastname":"Grossele","firstname":"Matteo","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":352,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]}
+{"idPerson":1,"lastname":"Grossele","firstname":"Matteo","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]}
 
 ------------------------------ STEP 4 JSON --------------------------
 
@@ -67,7 +67,7 @@ Request #6: GET http://127.0.1.1:5700/introsde-assignment2/person/1/height Accep
 => Result: OK
 => HTTP Status: 200
 
-[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":352,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]
+[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]
 
 ------------------------------ STEP 8 JSON --------------------------
 
@@ -85,7 +85,7 @@ Request #6: GET http://127.0.1.1:5700/introsde-assignment2/person/1/height Accep
 => Result: OK
 => HTTP Status: 200
 
-[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":65,"mid":8,"idPerson":1,"value":"12.0","date":"09/12/2011","type":"height"},{"idMeasure":352,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]
+[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"},{"idMeasure":65,"mid":8,"idPerson":1,"value":"12.0","date":"09/12/2011","type":"height"}]
 
 
 
@@ -101,7 +101,7 @@ Request #6: GET http://127.0.1.1:5700/introsde-assignment2/person/1/height Accep
 => Result: OK
 => HTTP Status: 200
 
-[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":65,"mid":8,"idPerson":1,"value":"12.0","date":"09/12/2011","type":"height"},{"idMeasure":66,"mid":8,"idPerson":1,"value":"12.0","date":"09/12/2011","type":"height"},{"idMeasure":352,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]
+[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"},{"idMeasure":65,"mid":8,"idPerson":1,"value":"12.0","date":"09/12/2011","type":"height"},{"idMeasure":66,"mid":8,"idPerson":1,"value":"12.0","date":"09/12/2011","type":"height"}]
 
 ------------------------------ STEP 10 JSON --------------------------
 
@@ -118,7 +118,7 @@ Request #6: GET http://127.0.1.1:5700/introsde-assignment2/person/1/height Accep
 => Result: OK
 => HTTP Status: 200
 
-[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":66,"mid":8,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":352,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]
+[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"},{"idMeasure":66,"mid":8,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"}]
 
 ------------------------------ STEP 11 JSON --------------------------
 
@@ -127,7 +127,7 @@ Request #11: GET http://127.0.1.1:5700/introsde-assignment2/person/1/height?befo
 => Result: OK
 => HTTP Status: 200
 
-[{"idMeasure":352,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]
+[{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]
 
 ------------------------------ STEP 12 JSON --------------------------
 
@@ -136,5 +136,5 @@ Request #12: GET http://127.0.1.1:5700/introsde-assignment2/person?measureType=h
 => Result: OK
 => HTTP Status: 200
 
-[{"idPerson":1,"lastname":"Grossele","firstname":"Matteo","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":352,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]}]
+[{"idPerson":1,"lastname":"Grossele","firstname":"Matteo","birthdate":"24/06/1993","measures":[{"idMeasure":1,"mid":2,"idPerson":1,"value":"90","date":"09/12/2011","type":"height"},{"idMeasure":2,"mid":3,"idPerson":1,"value":"86","date":"02/09/1978","type":"height"}]}]
 
